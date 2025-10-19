@@ -34,3 +34,8 @@ The exporter produces a ROS 1-style package layout and launch files. ROS 2 uses 
 - Follow the step-by-step guide in ROS2-Jazzy-Workshop-01 notes to visualize the model in rviz2. That guide covers the exact commands and launch files required for Jazzy.
 ![rviz_display.launch view](images/rviz_display_view)
 
+# micro-ROS
+Installing micro-ROS
+====================
+([First micro-ROS Application on Linux](https://micro.ros.org/docs/tutorials/core/first_application_linux/))
+
