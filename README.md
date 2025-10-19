@@ -17,7 +17,7 @@ Configure base link and child links
 - Set the number of child links to 1.
 - Rename the empty link to link_01 and the corresponding joint to joint_01.
 - For joint_01 choose type revolute_joint and set its related geometry to LINK_1.
-![sample_model image](images/solidwork_exporter_setup.gif)
+![sample_model image](images/urdf_exporter.gif)
 
 Preview and export
 ------------------
