@@ -32,4 +32,5 @@ The exporter produces a ROS 1-style package layout and launch files. ROS 2 uses 
 - Create a new package in your ROS 2 workspace called servo_description.
 - Copy the exported URDF and the meshes folder from the SolidWorks exporter into your new package.
 - Follow the step-by-step guide in ROS2-Jazzy-Workshop-01 notes to visualize the model in rviz2. That guide covers the exact commands and launch files required for Jazzy.
+![rviz_display.launch view](images/rviz_display_view)
 
