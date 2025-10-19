@@ -89,6 +89,19 @@ You can add the ROS 2 and micro-ROS workspace setup files to your .bashrc so the
 
     echo source ~/microros_ws/install/local_setup.bash >> ~/.bashrc
 
+Running the micro-ROS app
+-------------------------
+To give micro-ROS access to the ROS 2 dataspace, run the agent:
+
+- Serial (USB / UART):
+
+        ros2 run micro_ros_agent micro_ros_agent serial --dev /dev/ttyACM0
+- Wi-Fi / Ethernet (UDP):
+
+        ros2 run micro_ros_agent micro_ros_agent udp4 --port 8888
+
+Task 02
+=======
 
 
 
