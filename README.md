@@ -37,5 +37,31 @@ The exporter produces a ROS 1-style package layout and launch files. ROS 2 uses 
 # micro-ROS
 Installing micro-ROS
 ====================
-([First micro-ROS Application on Linux](https://micro.ros.org/docs/tutorials/core/first_application_linux/))
+follow the instructions detailed [here](https://micro.ros.org/docs/tutorials/core/first_application_linux/)).
+
+    # Create a workspace and download the micro-ROS tools
+    mkdir microros_ws
+    cd microros_ws
+    git clone -b $ROS_DISTRO https://github.com/micro-ROS/micro_ros_setup.git src/micro_ros_setup
+    
+    # Update dependencies using rosdep
+    sudo apt update && rosdep update
+    rosdep install --from-paths src --ignore-src -y
+    
+    # Install pip
+    sudo apt-get install python3-pip
+    
+    # Build micro-ROS tools and source them
+    colcon build
+    source install/local_setup.bash
+
+These instructions will setup a workspace with a ready-to-use micro-ROS build system. This build system is in charge of downloading the required cross-compilation tools and building the apps for the required platforms.
+
+Creating a new firmware workspace
+--------------------------------
+Once the build system is installed, let’s create a firmware workspace that targets all the required code and tools:
+
+    ros2 run micro_ros_setup create_firmware_ws.sh host
+
+
 
