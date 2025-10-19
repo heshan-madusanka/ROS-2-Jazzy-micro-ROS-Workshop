@@ -62,6 +62,34 @@ Creating a new firmware workspace
 Once the build system is installed, let’s create a firmware workspace that targets all the required code and tools:
 
     ros2 run micro_ros_setup create_firmware_ws.sh host
+For the user to create a custom application, a folder <my_app> will need to be registered in this location, containing the two files just described. Also, any such new application folder needs to be registered in src/uros/micro-ROS-demos/rclc/CMakeLists.txt by adding the following line:
+
+    export_executable(<my_app>)
+
+Building the firmware
+---------------------
+
+Once the app has been created, the build step is in order. given that we are compiling micro-ROS in the host machine rather than in a board, the cross-compilation implemented by the configuration step is not required in this case. We can therefore proceed to build the firmware and source the local installation:
+
+    ros2 run micro_ros_setup build_firmware.sh
+    source install/local_setup.bash
+
+Creating the micro-ROS agent
+---------------------------
+The micro-ROS app is now ready to be connected to a micro-ROS agent to start talking with the rest of the ROS 2 world. To do that, let’s first of all create a micro-ROS agent:
+
+    ros2 run micro_ros_setup create_agent_ws.sh
+Now, let’s build the agent packages and, when this is done, source the installation:
+
+    ros2 run micro_ros_setup build_agent.sh
+    source install/local_setup.bash    
+Add micro-ROS environment to bashrc 
+-----------------------------------
+You can add the ROS 2 and micro-ROS workspace setup files to your .bashrc so the files do not have to be sourced every time a new command line is opened.
+
+    echo source ~/microros_ws/install/local_setup.bash >> ~/.bashrc
+
+
 
 
 
