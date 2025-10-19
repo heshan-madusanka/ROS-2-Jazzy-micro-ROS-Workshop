@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot name="servo_description" xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <link name="base_link">
+    <inertial>
+      <origin
+        xyz="-0.00181669331950288 -0.00812663302689943 -0.00451550415802209"
+        rpy="0 0 0" />
+      <mass
+        value="0.00197871129521283" />
+      <inertia
+        ixx="1.44758151007133E-07"
+        ixy="3.08865608023859E-14"
+        ixz="7.02460871171258E-09"
+        iyy="2.36910306633922E-07"
+        iyz="1.9793881858573E-13"
+        izz="1.67168966673058E-07" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://servo_description/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.0 0.0 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://servo_description/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  
+  <link name="link_01">
+    <inertial>
+      <origin
+        xyz="6.93889390390723E-18 0.00532571920631412 7.80625564189563E-18"
+        rpy="0 0 0" />
+      <mass
+        value="0.000549338745067411" />
+      <inertia
+        ixx="1.81880993094334E-08"
+        ixy="-1.17667180124475E-23"
+        ixz="-4.904876927657E-09"
+        iyy="1.70698831784011E-08"
+        iyz="-7.21652243954026E-24"
+        izz="1.06840495719932E-08" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://servo_description/meshes/link_01.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://servo_description/meshes/link_01.STL" />
+      </geometry>
+    </collision>
+  </link>
+  
+  <joint
+    name="joint_01"
+    type="revolute">
+    <origin
+      xyz="-0.00727514325122274 -0.00812663258989232 0.00591702989211944"
+      rpy="1.5707963267949 0 -2.01915461393579" />
+    <parent
+      link="base_link" />
+    <child
+      link="link_01" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="0"
+      upper="3.14159265358979"
+      effort="5"
+      velocity="0.5"/>
+  </joint>
+
+</robot>
