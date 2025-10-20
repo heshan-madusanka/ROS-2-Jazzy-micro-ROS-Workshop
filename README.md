@@ -169,7 +169,7 @@ To enable micro-ROS development using Arduino boards,
 - then search for [micro_ros_arduino](https://github.com/micro-ROS/micro_ros_arduino).
 - Install the version compatible with your ROS 2 distribution.
 
-Task 02
+Task 03
 =======
 
 
