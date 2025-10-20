@@ -254,6 +254,12 @@ To enable micro-ROS development using Arduino boards,
 
 Task 03
 =======
+In this task, we will program our ESP32 to act as a ROS 2 node. This node will be responsible for two key actions:
+
+1. Subscribing to the servo_cmd topic to receive angle commands from the main ROS 2 system.
+2. Publishing the servo's current position to the /joint_states topic, allowing RViz to visualize the real hardware state.
+
+You can find the complete, final code for this task in [here]().
 
 
 
