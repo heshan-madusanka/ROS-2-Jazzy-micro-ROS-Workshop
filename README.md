@@ -261,6 +261,60 @@ In this task, we will program our ESP32 to act as a ROS 2 node. This node will b
 
 You can find the complete, final code for this task in [here](https://github.com/heshan-madusanka/ROS-2-Jazzy-micro-ROS-Workshop/tree/main/micro-ROS-servo).
 
+Now that we understand the code, let's get it running on the hardware.
 
+Upload the Code to the ESP32
+-----------------------------
+1. Open your Arduino IDE.
+2. Create a new, empty sketch (File > New).
+3. Go to the workshop's GitHub repository [here](https://github.com/heshan-madusanka/ROS-2-Jazzy-micro-ROS-Workshop/blob/main/micro-ROS-servo/micro-ROS-servo.ino) and copy the entire ESP32 servo code.
+4. Paste the code into your new sketch, completely replacing the default setup() and loop() functions.
+5. In the Arduino IDE, go to Tools > Board and select your ESP32 board model.
+6. Go to Tools > Port and select the serial port your ESP32 is connected to (e.g., /dev/ttyACM0 or /dev/ttyUSB0 on Linux, COM3 on Windows).
+7. Click the Upload button (the right-arrow icon) to compile and flash the code to your ESP32. Wait for it to complete.
 
+Connect the Hardware
+--------------------
+Connect the servo motor to the ESP32. Ensure your wiring is correct to avoid damaging your components.
+- Servo GND (Brown/Black): Connect to a GND pin on the ESP32.
+- Servo VCC (Red): Connect to the VIN or 5V pin on the ESP32 (this provides 5V from the USB connection).
+- Servo Signal (Orange/Yellow): Connect to the pin you defined in the code (e.g., Pin 13).
+![servo_motor_connection](https://i0.wp.com/randomnerdtutorials.com/wp-content/uploads/2018/05/esp32-servo-wiring_bb.png?resize=828%2C394&quality=100&strip=all&ssl=1)
+
+Start the micro-ROS Agent
+-------------------------
+For the ESP32 (client) to talk to the ROS 2 world (computer), we must run the micro-ROS Agent. In this workshop, we use the serial/USB connection as the communication bridge.
+
+1. Open a new, sourced terminal on your computer.
+2. Run the following command to start the agent. This command tells the agent to listen for a connection on the specified serial port.
+
+       ros2 run micro_ros_agent micro_ros_agent serial --dev /dev/ttyACM0
+   - Note: If your port is different (e.g., /dev/ttyUSB0), change the --dev argument to match.
+3. The agent will start and wait. Now, press the "EN" (Enable) or "RST" (Reset) button on your ESP32.
+4. Watch the agent's terminal. You should see output confirming a client has connected, and you'll see session information.
+
+Verify the Node from ROS 2
+--------------------------
+Now that the agent is running and the ESP32 is connected, our node should be live in the ROS 2 system.
+1. Open a new, separate terminal (leave the agent running!).
+2. First, let's check the topic list:
+
+       ros2 topic list
+You should now see our two new topics:
+- /joint_states (being published by the ESP32)
+- /servo_cmd (which the ESP32 is subscribed to)
+
+Test the System
+---------------
+Let's send a command from our computer to the ESP32 and see the servo move.
+1. Open one more new terminal and source ROS 2.
+2. Type (or copy) the following command to publish a single message to the servo_cmd topic, telling it to go to 90 degrees.
+
+       ros2 topic pub -1 /servo_cmd std_msgs/msg/Float64 "{data: 90.0}"
+- -1 means "publish one message and exit."
+- std_msgs/msg/Float64 is the message type.
+- "{data: 90.0}" is the data payload, setting the angle to 90.
+
+3. Look at your hardware. The servo motor should immediately move to the 90-degree position.
+4. Try it again with a different value. Press the Up Arrow in your terminal to get the last command and change the data
 
