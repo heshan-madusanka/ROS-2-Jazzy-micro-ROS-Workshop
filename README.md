@@ -34,6 +34,32 @@ The exporter produces a ROS 1-style package layout and launch files. ROS 2 uses 
 - Follow the step-by-step guide in ROS2-Jazzy-Workshop-01 notes to visualize the model in rviz2. That guide covers the exact commands and launch files required for Jazzy.
 ![rviz_display.launch view](images/rviz_display_view)
 
+TASK 02
+=======
+In this task, We will use powerful, built-in ROS 2 command-line tools to:
+
+1. Visually map the relationship between our running nodes.
+2. List all active communication channels (Topics).
+3. Inspect the specific data structure (Message Type) of our servo's topic.
+4. "Listen" to the raw data being published to the topic in real-time.
+
+This process, known as **introspection**, is a fundamental skill for debugging and understanding any ROS-based robotic system.
+
+Prerequisites
+-------------
+- You must have the launch file from TASK 01 running in a terminal.
+
+Visualizing the Node Graph with rqt_graph
+-----------------------------------------
+ROS 2 system is a graph of processing units (Nodes) that communicate over topics. The rqt_graph tool provides a live, visual representation of this graph.
+
+1. Open a new, sourced terminal.
+2. Run the following command to start the RQT graph tool:
+
+       rqt_graph
+
+![rqt_graph](images/rqt_graph)
+
 # micro-ROS
 - general overview
 - Supported Hardware
