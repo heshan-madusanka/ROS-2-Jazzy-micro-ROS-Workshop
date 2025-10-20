@@ -60,6 +60,36 @@ ROS 2 system is a graph of processing units (Nodes) that communicate over topics
 
 ![rqt_graph](images/rqt_graph)
 
+Listing All Active Topics
+-------------------------
+While rqt_graph is visual, we can get a quick and simple text list of all topics currently advertised in the system.
+
+Run the topic list command:
+
+       ros2 topic list
+
+Inspecting a Topic's Message Type
+---------------------------------
+A topic is a typed channel. It can only transmit data that adheres to a specific, predefined structure, known as a message type. We must know this type to understand the data being sent.
+
+In your terminal, use the topic info command to inspect our topic of interest:
+
+       ros2 topic info /joint_states
+
+"Echoing" Live Topic Data
+-------------------------
+Now that we know the topic exists and what message type it uses, we can use the echo command to print the raw data from the topic directly to our console in real-time.
+
+In your terminal, run the topic echo command:
+
+       ros2 topic echo /joint_states
+
+In this task, you have used powerful ROS 2 introspection tools to dissect the communication happening "under the hood".
+
+Pay close attention to the **/joint_states** topic. As you saw, this is the topic RViz uses to get the servo's position and visualize it.
+
+Understanding this topic is important because our final goal is to use micro-ROS to publish the real hardware joint states from a physical servo. We will publish that hardware data to this exact same /joint_states topic, replacing the virtual GUI. This task shows you the data format and topic name you will need to use later.
+
 # micro-ROS
 - general overview
 - Supported Hardware
