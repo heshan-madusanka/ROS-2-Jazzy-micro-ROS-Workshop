@@ -1,5 +1,5 @@
 # ROS-2-Jazzy-micro-ROS-Workshop
-ROS2-jazzy, Rviz, micro_ROS, ESP32
+ROS2-jazzy, Rviz, micro_ROS, ESP32 (Overview for the workshop)
 
 Task 01
 =======
@@ -35,6 +35,12 @@ The exporter produces a ROS 1-style package layout and launch files. ROS 2 uses 
 ![rviz_display.launch view](images/rviz_display_view)
 
 # micro-ROS
+- general overview
+- Supported Hardware
+- Supported RTOSes
+- Comparison to related approaches
+- ROS 2 Feature Comparison 
+
 Installing micro-ROS
 ====================
 follow the instructions detailed [here](https://micro.ros.org/docs/tutorials/core/first_application_linux/)).
