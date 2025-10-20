@@ -90,16 +90,9 @@ Pay close attention to the **/joint_states** topic. As you saw, this is the topi
 
 Understanding this topic is important because our final goal is to use micro-ROS to publish the real hardware joint states from a physical servo. We will publish that hardware data to this exact same /joint_states topic, replacing the virtual GUI. This task shows you the data format and topic name you will need to use later.
 
-# micro-ROS
-- general overview
-- Supported Hardware
-- Supported RTOSes
-- Comparison to related approaches
-- ROS 2 Feature Comparison
-
 # Introduction to micro-ROS
 
-micro-ROS is a variant of ROS 2 designed specifically for deeply embedded robotic systems. Its main goal is to bring ROS concepts such as nodes, publishers/subscribers, services, lifecycle, and node graph directly onto microcontrollers (MCUs). This allows low-level firmware devices (e.g., sensors, motor drivers, tiny control nodes) to fully participate in the ROS 2 ecosystem rather than acting as “dumb peripherals”.
+micro-ROS is a variant of ROS 2 designed specifically for deeply embedded robotic systems. Its main goal is to bring ROS concepts such as nodes, publishers/subscribers, services, lifecycle and node graph directly onto microcontrollers (MCUs). This allows low-level firmware devices (ex: sensors, motor drivers, control nodes) to fully participate in the ROS 2 ecosystem instead of acting merely as simple data producers/consumers.
 
 Unlike standard ROS 2, which assumes a Linux environment and comparatively large compute resources, micro-ROS targets resource-constrained microcontrollers that often have only tens or hundreds of kilobytes of RAM. This is achieved by replacing the full DDS middleware with DDS-XRCE, a transport designed for Extremely Resource Constrained Environments.
 
@@ -127,7 +120,7 @@ A micro-ROS system consists of:
 - A micro-ROS Client (running on the MCU)
 - A micro-ROS Agent (running on a ROS 2 host machine)
 
-The Agent bridges the communication between the embedded device and the full ROS 2 graph. Communication between Client and Agent can happen over UART, USB, Wi-Fi, or UDP/Ethernet, depending on hardware.
+The Agent bridges the communication between the embedded device and the full ROS 2 graph. Communication between Client and Agent can happen over UART, USB, Wi-Fi or UDP/Ethernet, depending on hardware.
 
 ## 3. Hardware Support
 
@@ -141,7 +134,7 @@ There are two hardware categories:
 - **Officially supported boards** (tested and maintained with LTS support)
 - **Community supported boards** (user-contributed)
 
-Some examples of officially supported boards include ESP32, Raspberry Pi Pico RP2040, Arduino Portenta H7, ROBOTIS OpenCR, Teensy 3/4 families, STM32 IoT Discovery boards, and Renesas RA6M5 platforms. These cover FreeRTOS, Zephyr, NuttX, Arduino, and vendor-specific SDKs.
+Some examples of officially supported boards include ESP32, Raspberry Pi Pico RP2040, Arduino Portenta H7, ROBOTIS OpenCR, Teensy 3/4 families, STM32 IoT Discovery boards and Renesas RA6M5 platforms. These cover FreeRTOS, Zephyr, NuttX, Arduino and vendor-specific SDKs.
 
 Community-supported options include Arduino Due/Zero and ST NUCLEO development boards.
 
@@ -160,15 +153,15 @@ micro-ROS differs because it:
 
 micro-ROS aims to preserve as much of the standard ROS 2 programming model as possible while adapting it to the constraints of microcontrollers. Many core ROS 2 features are available in micro-ROS, though some are simplified or still under development due to MCU limitations.
 
-At a high level, micro-ROS supports the essential ROS 2 concepts — nodes, publishers/subscribers, services, actions, lifecycle, and discovery — but with restrictions such as fixed-size messages and compile-time composition. In place of the full DDS middleware, micro-ROS relies on DDS-XRCE, a transport specifically designed for extremely resource-constrained devices.
+At a high level, micro-ROS supports the essential ROS 2 concepts — nodes, publishers/subscribers, services, actions, lifecycle and discovery — but with restrictions such as fixed-size messages and compile-time composition. In place of the full DDS middleware, micro-ROS relies on DDS-XRCE, a transport specifically designed for extremely resource-constrained devices.
 
 ### Features well supported in micro-ROS
 
 - Core client library: Built on rcl from ROS 2, extended with rclc for deterministic, allocation-free runtime on MCUs.
 - Lifecycle nodes: Supported via rclc_lifecycle, enabling managed startup and shutdown behavior.
-- Publish/subscribe, services, and actions: Fully available, as long as message types are fixed-size.
+- Publish/subscribe, services and actions: Fully available, as long as message types are fixed-size.
 - Discovery and node graph information: Works the same way as ROS 2 (with additional discovery options to find Agents).
-- DDS-XRCE transport: Provides UDP, serial (UART), and custom transport support.
+- DDS-XRCE transport: Provides UDP, serial (UART) and custom transport support.
 - Quality of Service (QoS): Reliable and best-effort semantics are available at compile-time.
 - IDL type support: micro-ROS supports the same IDL definitions as ROS 2.
 
@@ -183,7 +176,9 @@ At a high level, micro-ROS supports the essential ROS 2 concepts — nodes, publ
 
 - Launch system for MCU nodes: Not currently supported; coordination depends on the RTOS.
 - DDS security on the client side: Only available on Agent/DDS side for now; security for Client–Agent communication is planned.
-- Simulation time: May work but not guaranteed, especially for hardware-in-the-loop setups. 
+- Simulation time: May work but not guaranteed, especially for hardware-in-the-loop setups.
+
+For further details and the complete feature overview, refer to the official documentation at https://micro.ros.org/docs/overview/features/
 
 Installing micro-ROS
 ====================
