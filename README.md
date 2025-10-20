@@ -318,3 +318,37 @@ Let's send a command from our computer to the ESP32 and see the servo move.
 3. Look at your hardware. The servo motor should immediately move to the 90-degree position.
 4. Try it again with a different value. Press the Up Arrow in your terminal to get the last command and change the data
 
+Task 04
+=======
+In this final task, we will create a new launch file that removes the simulator and relies entirely on our micro-ROS node as the source of truth for the robot's state. When we run this, commands sent from our computer will move the physical servo, and the servo's actual position will be broadcast back and visualized in RViz, completing the full communication loop.
+
+Create a New Launch File
+------------------------
+1. Navigate to the launch folder inside your servo_description package. From your workspace
+2. Create a new, empty launch file named **servo_control.launch.xml**.
+
+Modify the Launch File
+----------------------
+Our goal is to create a launch configuration that does everything display.launch.xml did, except for running the GUI simulator.
+1. Copy the entire content from display.launch.xml and paste it into the empty servo_control.launch.xml.
+2. n servo_control.launch.xml, find and delete the following line:
+
+       <node pkg="joint_state_publisher_gui" exec="joint_state_publisher_gui" />
+We are removing this because the joint_state_publisher_gui node is the simulation slider. Our ESP32 is now publishing the /joint_states topic, so we don't want the simulator running and interfering.
+3. Build and Source the Workspace:Since we've added a new file to our package, we need to build our workspace so ROS 2 can find it.
+
+Launch and Test the Complete System
+-----------------------------------
+Now for the final test. We will have three terminals running: the micro-ROS agent, our new launch file, and a third for publishing commands.
+
+- **Terminal 1**: Make sure your ESP32 is plugged in. Start the micro-ROS Agent and press the ESP32's reset button to connect, just as you did in TASK 03.
+
+        ros2 run micro_ros_agent micro_ros_agent serial --dev /dev/ttyACM0
+- Terminal 2: Launch your new servo_control.launch.xml file.
+
+       ros2 launch servo_description servo_control.launch.xml
+  An RViz window will open. The model's initial position should be 0, matching the hardware.
+- Terminal 3: Publish a command to move the servo to 45 degrees.
+
+       ros2 topic pub -1 /servo_cmd std_msgs/msg/Float64 "{data: 45.0}"
+  Observe the result: The moment you press Enter, you should see the physical servo motor and the 3D model in RViz move to the 45-degree position at the same time.
