@@ -106,6 +106,13 @@ To give micro-ROS access to the ROS 2 dataspace, run the agent:
 
         ros2 run micro_ros_agent micro_ros_agent udp4 --port 8888
 
+Setting up the Arduino IDE for micro-ROS
+----------------------------------------
+To enable micro-ROS development using Arduino boards, 
+- open the Arduino IDE, navigate to Sketch -> Include Library -> Manage Libraries
+- then search for [micro_ros_arduino](https://github.com/micro-ROS/micro_ros_arduino).
+- Install the version compatible with your ROS 2 distribution.
+
 Task 02
 =======
 
