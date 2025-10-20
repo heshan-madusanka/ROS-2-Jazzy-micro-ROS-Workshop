@@ -354,3 +354,22 @@ Now for the final test. We will have three terminals running: the micro-ROS agen
   Observe the result: The moment you press Enter, you should see the physical servo motor and the 3D model in RViz move to the 45-degree position at the same time.
 
 ![final_task](images/final_task.gif)
+
+Exercise: Create a C++ Servo Sweeper Node
+=========================================
+So far, you have controlled the servo by manually publishing a single command at a time using ros2 topic pub. This is great for testing but not for autonomous behavior.
+
+Your challenge is to write a standalone C++ ROS 2 node that, when run, will automatically and continuously sweep the servo motor back and forth. This exercise will teach you the fundamentals of creating your own C++ publisher node from scratch.
+
+Create a new ROS 2 C++ node that:
+---------------------------------
+
+- Publishes messages of type std_msgs/msg/Float64 to the /servo_cmd topic.
+- Continuously sweeps the servo angle from 0 to 180 degrees, and then back from 180 to 0 degrees.
+- The sweep should happen in increments of 5 degrees.
+- There must be a short delay between each 5-degree step to give the servo time to move smoothly.
+
+Getting Started: Your Guide
+---------------------------
+This task is very achievable by following and adapting the official ROS 2 documentation.
+- Primary Reference: Your main guide for this task is the official tutorial: [Writing a simple publisher and subscriber (C++)](https://docs.ros.org/en/jazzy/Tutorials/Beginner-Client-Libraries/Writing-A-Simple-Cpp-Publisher-And-Subscriber.html). You will only need to implement the publisher part.
