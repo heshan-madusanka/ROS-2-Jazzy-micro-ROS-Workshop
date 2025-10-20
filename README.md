@@ -355,6 +355,8 @@ Now for the final test. We will have three terminals running: the micro-ROS agen
 
 ![final_task](images/final_task.gif)
 
+![final_rqt_graph](images/final_rqt_graph)
+
 Exercise: Create a C++ Servo Sweeper Node
 =========================================
 So far, you have controlled the servo by manually publishing a single command at a time using ros2 topic pub. This is great for testing but not for autonomous behavior.
