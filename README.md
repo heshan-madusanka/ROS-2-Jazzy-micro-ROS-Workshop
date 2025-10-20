@@ -352,3 +352,5 @@ Now for the final test. We will have three terminals running: the micro-ROS agen
 
        ros2 topic pub -1 /servo_cmd std_msgs/msg/Float64 "{data: 45.0}"
   Observe the result: The moment you press Enter, you should see the physical servo motor and the 3D model in RViz move to the 45-degree position at the same time.
+
+![final_task](images/final_task.mp4)
