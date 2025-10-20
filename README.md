@@ -182,7 +182,7 @@ For further details and the complete feature overview, refer to the official doc
 
 Installing micro-ROS
 ====================
-follow the instructions detailed [here](https://micro.ros.org/docs/tutorials/core/first_application_linux/)).
+follow the instructions detailed [here](https://micro.ros.org/docs/tutorials/core/first_application_linux/).
 
     # Create a workspace and download the micro-ROS tools
     mkdir microros_ws
