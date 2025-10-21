@@ -1,5 +1,4 @@
 # ROS-2-Jazzy-micro-ROS-Workshop
-ROS2-jazzy, Rviz, micro_ROS, ESP32 (Overview for the workshop)
 
 Task 01
 =======
